@@ -1,35 +1,26 @@
 async function createAirline() {
-  var userId = document.getElementById("id").value;
-  var userName = document.getElementById("name").valuex;
-  var userCountry = document.getElementById("country").value;
-  var userLogo = document.getElementById("logo").value;
-  var userSlogan = document.getElementById("slogan").value;
-  var userHead = document.getElementById("head_quaters").value;
-  var userWebsite = document.getElementById("website").value;
-  var userEstablished = document.getElementById("established").value;
-
   let airInfo = {
-    id: userId,
-    name: userName,
-    country: userCountry,
-    logo: userLogo,
-    slogan: userSlogan,
-    head_quaters: userHead,
-    website: userWebsite,
-    established: userEstablished,
+    id: document.getElementById("id").value,
+    name: document.getElementById("name").value,
+    country: document.getElementById("country").value,
+    logo: document.getElementById("logo").value,
+    slogan: document.getElementById("slogan").value,
+    head_quaters: document.getElementById("head_quaters").value,
+    website: document.getElementById("website").value,
+    established: document.getElementById("established").value,
   };
 
-  let urlAir = "https://api.instantwebtools.net/v1/airlines";
-  let response = await fetch(urlAir, {
+  let url = "https://api.instantwebtools.net/v1/airlines";
+  let response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(airInfo),
   });
-  let resultAirReg = await response.json();
-  console.log(resultAirReg);
-  if (response.status === 200) {
+  let result = await response.json();
+  console.log(result);
+  if (response.ok) {
     alert("Registred Successful");
   } else {
     alert("Registred Unsuccessful");
